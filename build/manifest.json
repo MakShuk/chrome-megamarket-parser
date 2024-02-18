@@ -1,0 +1,39 @@
+{
+  "name": "Megamarket parser",
+  "version": "0.1.0",
+  "description": "New Megamarket parser",
+  "permissions": ["tabs", "activeTab", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/click-16.png",
+      "32": "assets/click-32.png",
+      "64": "assets/click-64.png",
+      "128": "assets/click-128.png"
+    },
+    "default_title": "Megamarket parser"
+  },
+  "icons": {
+    "16": "assets/click-16.png",
+    "32": "assets/click-32.png",
+    "64": "assets/click-64.png",
+    "128": "assets/click-128.png"
+  },
+  "manifest_version": 3
+}
