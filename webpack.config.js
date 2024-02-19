@@ -10,8 +10,11 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			'@scripts': path.resolve(__dirname, 'src/scripts'),
+			'@config': path.resolve(__dirname, 'src/config'),
 			'@services': path.resolve(__dirname, 'src/services'),
+			'@scripts': path.resolve(__dirname, 'src/scripts'),
+			'@injectable-scripts': path.resolve(__dirname, 'src/injectable-scripts'),
+			'@components': path.resolve(__dirname, 'src/components'),
 		},
 		extensions: ['.ts', '.js', 'tsx'],
 	},

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body id="extension-body">
+		<div id="start-message-area" class="" role="alert">Проверка станицы...</div>
+		<div id="error-message-area" class="alert alert-danger message-area" role="alert" style="display: none">
+			Вы видите это сообщение только если произошла ошибка
+		</div>
+		<div id="main-area" style="display: none">
+			<div class="set-area">
+				<div id="bonus-value" class="alert alert-light" role="alert">20%</div>
+				<input id="bonus-input" type="number" min="1" max="99" placeholder="процент кэшбэка..." />
+				<button id="set-bonus-button" type="button" class="btn btn-info">Задать</button>
+			</div>
+			<div class="set-area">
+				<div id="pages-value" class="alert alert-light" role="alert">5 стр.</div>
+				<input
+					id="pages-input"
+					type="number"
+					min="1"
+					max="99"
+					placeholder="страниц для поиска..."
+				/>
+				<button id="set-pages-button" type="button" class="btn btn-info">Задать</button>
+			</div>
+			<button id="parse-button" type="button" class="btn btn-danger">
+				Найти лучшие предложения
+			</button>
+		</div>
+	</body>
+</html>

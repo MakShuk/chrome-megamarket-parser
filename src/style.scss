@@ -1,0 +1,113 @@
+#extension-body {
+	padding: 10px;
+	padding-top: 15px;
+	width: 460px;
+	background-color: #f2f5f7;
+
+	.message-area {
+		text-align: center;
+		color: #fff;
+		border-radius: 16px;
+		padding: 8px;
+	}
+
+	#error-message-area {
+		background-color: rgb(125, 27, 91);
+	}
+
+	#start-message-area {
+		text-align: center;
+		margin-bottom: 6px;
+
+	}
+
+	.set-area {
+		display: grid;
+		justify-content: center;
+		grid-template-columns: 20% 60% 20%;
+		gap: 4px;
+
+		div {
+			padding: 1px;
+			height: 26px;
+			text-align: center;
+			border-radius: 8px;
+			font-weight: 600;
+			background: url('./../build/assets/bonus.svg');
+			color: #fff;
+			font-size: 14px;
+		}
+
+		input {
+			padding: 1px;
+			height: 28px;
+			border: none;
+			background: rgba(8, 8, 8, 0.06);
+			border-radius: 12px;
+			font-size: 16px;
+			line-height: 20px;
+			color: rgb(8, 7, 7);
+			caret-color: rgb(155, 56, 220);
+			text-overflow: ellipsis;
+			padding-left: 20px;
+			font-weight: 600;
+			text-align: center;
+		}
+
+		input:focus {
+			outline-color: rgb(199, 163, 224); /* Цвет контура при фокусе */
+			outline-width: 2px; /* Ширина контура при фокусе */
+			outline-style: solid; /* Стиль контура при фокусе (solid, dashed, dotted и т.д.) */
+		}
+
+		input::placeholder {
+			color: #999;
+			font-style: italic;
+			font-size: 14px;
+			text-align: center;
+		}
+
+		input:focus::placeholder {
+			color: #555;
+			font-style: normal;
+			font-style: italic;
+		}
+
+		button {
+			padding: 1px;
+			height: 28px;
+			color: white;
+		}
+	}
+
+	button {
+		background-color: #8654cc;
+		align-items: center;
+		border: 1px solid #0000;
+		border-radius: 16px;
+		cursor: pointer;
+		display: inline-flex;
+		font-size: 14px;
+		font-weight: 600;
+		justify-content: center;
+		letter-spacing: normal;
+		line-height: 20px;
+		outline: none;
+		overflow: hidden;
+		padding: 10px 24px;
+		user-select: none;
+		transition: transform 0.2s;
+	}
+
+	button:active {
+		transform: scale(0.9);
+	}
+
+	button:hover {
+		background-color: #5d2aa5;
+	}
+
+	#parse-button {
+		width: 100%;
+	}
+}

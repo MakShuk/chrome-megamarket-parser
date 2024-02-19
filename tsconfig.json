@@ -31,8 +31,11 @@
 		"noImplicitReturns": true,
 		"baseUrl": "./src",
 		"paths": {
-			"@script/*": ["script/*"],
-			"@services/*": ["services/*"]
+			"@config/*": ["config/*"],
+			"@services/*": ["services/*"],
+			"@scripts/*": ["scripts/*"],
+			"@injectable-scripts/*": ["injectable-scripts/*"],
+			"@components/*": ["components/*"]
 		}
 	}
 }

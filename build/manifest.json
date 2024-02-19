@@ -22,18 +22,18 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
-      "16": "assets/click-16.png",
-      "32": "assets/click-32.png",
-      "64": "assets/click-64.png",
-      "128": "assets/click-128.png"
+      "16": "assets/game-16.png",
+      "32": "assets/game-32.png",
+      "64": "assets/game-64.png",
+      "128": "assets/game-128.png"
     },
     "default_title": "Megamarket parser"
   },
   "icons": {
-    "16": "assets/click-16.png",
-    "32": "assets/click-32.png",
-    "64": "assets/click-64.png",
-    "128": "assets/click-128.png"
+    "16": "assets/game-16.png",
+    "32": "assets/game-32.png",
+    "64": "assets/game-64.png",
+    "128": "assets/game-128.png"
   },
   "manifest_version": 3
 }
