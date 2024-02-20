@@ -28,7 +28,6 @@ export async function runBackgroundScript<T>(
 				func,
 				args: arr || [],
 			});
-			console.log(result[0]?.result);
 			funcResult = result[0]?.result ?? 'Not value';
 		} else {
 			throw new Error('Active tab not found');

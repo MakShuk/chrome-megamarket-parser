@@ -7,6 +7,8 @@ import { initValueInStorage } from '@components/storage';
 import './style.scss';
 import { LocalStorageSetting } from '@config/local-storage-key.enum';
 import { setEventToBonusButton, setEventToPagesButton } from '@components/button-events';
+import { addMainButtonEvents } from '@components/main-button-events';
+import { checkError } from '@scripts/check-error';
 
 const MEGA_MARKET_URL = 'megamarket.ru';
 
@@ -21,30 +23,23 @@ async function init() {
 	checkError(result);
 
 	if (!isThisPageResult) {
-		checkError({ errorStatus: true, content: 'Текущая страница не Мегамаркет' });
+		checkError({ error: true, content: 'Текущая страница не Мегамаркет' });
 		return;
 	}
-	mainArea.hide(false);
 	await initAllValueInStorage();
 
-	setEventToBonusButton()
-	setEventToPagesButton()
+	setEventToBonusButton();
+	setEventToPagesButton();
+	addMainButtonEvents()
+	mainArea.hide(false);
 }
 
 async function isMegaMarketPage() {
 	const result = await runBackgroundScript<boolean>(isThisPage, [MEGA_MARKET_URL]);
 	const isThisPageResult = !result.error && result.data;
-	const errorStatus = result.error;
+	const error = result.error;
 	const content = result.content;
-	return { isThisPageResult, errorStatus, content };
-}
-
-function checkError({ errorStatus, content }: { errorStatus: boolean; content: string }) {
-	const errorArea = new PageElementService<HTMLDivElement>(ExtensionSelector.ErrorMessageArea);
-	if (errorStatus) {
-		errorArea.setTextContent(content);
-		errorArea.hide(false);
-	}
+	return { isThisPageResult, error, content };
 }
 
 async function initAllValueInStorage() {

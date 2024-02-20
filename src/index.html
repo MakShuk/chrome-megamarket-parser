@@ -12,17 +12,40 @@
 	</head>
 	<body id="extension-body">
 		<div id="start-message-area" class="" role="alert">Проверка станицы...</div>
-		<div id="error-message-area" class="alert alert-danger message-area" role="alert" style="display: none">
+		<div
+			id="error-message-area"
+			class="alert alert-danger message-area"
+			role="alert"
+			style="display: none"
+		>
 			Вы видите это сообщение только если произошла ошибка
 		</div>
+		<div id="loading-spinner" style="display: none">
+			<div class="lds-spinner">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<span>Скрипт выполняется не <br />зарывайте окно...</span>
+		</div>
+
 		<div id="main-area" style="display: none">
 			<div class="set-area">
-				<div id="bonus-value" class="alert alert-light" role="alert">20%</div>
+				<div id="bonus-value" class="alert alert-light" role="alert">20 %</div>
 				<input id="bonus-input" type="number" min="1" max="99" placeholder="процент кэшбэка..." />
 				<button id="set-bonus-button" type="button" class="btn btn-info">Задать</button>
 			</div>
 			<div class="set-area">
-				<div id="pages-value" class="alert alert-light" role="alert">5 стр.</div>
+				<div id="pages-value" class="alert alert-light" role="alert">3 стр.</div>
 				<input
 					id="pages-input"
 					type="number"
