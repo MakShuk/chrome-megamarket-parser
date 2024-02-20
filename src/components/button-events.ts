@@ -3,36 +3,46 @@ import { LocalStorageSetting } from '@config/local-storage-key.enum';
 import { PageElementService } from '@services/page-element.service';
 import { LocalStorage } from 'storage-manager-js';
 
-export function setEventToBonusButton() {
-	const btnElement = new PageElementService<HTMLButtonElement>(ExtensionSelector.SetBonusButton);
-	const inputElement = new PageElementService<HTMLInputElement>(ExtensionSelector.BonusInput);
-	const valueElement = new PageElementService<HTMLInputElement>(ExtensionSelector.BonusValue);
+function addInputValueChangeHandler(
+  buttonSelector: string,
+  inputSelector: string,
+  valueSelector: string,
+  storageKey: LocalStorageSetting
+) {
+  const button = new PageElementService<HTMLButtonElement>(buttonSelector);
+  const input = new PageElementService<HTMLInputElement>(inputSelector);
+  const value = new PageElementService<HTMLDivElement>(valueSelector);
 
-	btnElement.addEvent(() => {
-		const valueStatus = inputElement.getValue<string>();
+  if (button.node.error || input.node.error || value.node.error) {
+    return;
+  }
 
-		if (valueStatus.error) return;
-		const value = `${valueStatus.content} %`;
+  button.addEvent(() => {
+    const { error, content } = input.getValue<string>();
 
-		LocalStorage.set(LocalStorageSetting.Bonus, value);
-		inputElement.setValue('');
-		valueElement.setTextContent(value);
-	});
+    if (error) {
+      return;
+    }
+
+    const formattedValue = `${content} ${storageKey === LocalStorageSetting.Bonus ? '%' : 'стр.'}`;
+    LocalStorage.set(storageKey, formattedValue);
+    input.setValue('');
+    value.setTextContent(formattedValue);
+  });
 }
 
-export function setEventToPagesButton() {
-	const btnElement = new PageElementService<HTMLButtonElement>(ExtensionSelector.SetPagesButton);
-	const inputElement = new PageElementService<HTMLInputElement>(ExtensionSelector.PagesInput);
-	const valueElement = new PageElementService<HTMLInputElement>(ExtensionSelector.PagesValue);
+export function addSetValueButtonEvents() {
+  addInputValueChangeHandler(
+    ExtensionSelector.SetBonusButton,
+    ExtensionSelector.BonusInput,
+    ExtensionSelector.BonusValue,
+    LocalStorageSetting.Bonus
+  );
 
-	btnElement.addEvent(() => {
-		const valueStatus = inputElement.getValue<string>();
-
-		if (valueStatus.error) return;
-		const value = `${valueStatus.content} стр.`;
-
-		LocalStorage.set(LocalStorageSetting.Pages, value);
-		inputElement.setValue('');
-		valueElement.setTextContent(value);
-	});
+  addInputValueChangeHandler(
+    ExtensionSelector.SetPagesButton,
+    ExtensionSelector.PagesInput,
+    ExtensionSelector.PagesValue,
+    LocalStorageSetting.Pages
+  );
 }

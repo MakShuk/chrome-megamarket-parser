@@ -1,14 +1,14 @@
 import { ExtensionSelector } from '@config/extension-selector.enum';
 import { PageElementService } from '@services/page-element.service';
 import { runBackgroundScript } from '@scripts/run-background-script';
-import { isThisPage } from '@injectable-scripts/is-this-page';
+import { isCurrentPage } from '@injectable-scripts/is-this-page';
 import { initValueInStorage } from '@components/storage';
 
 import './style.scss';
 import { LocalStorageSetting } from '@config/local-storage-key.enum';
-import { setEventToBonusButton, setEventToPagesButton } from '@components/button-events';
 import { addMainButtonEvents } from '@components/main-button-events';
-import { checkError } from '@scripts/check-error';
+import { displayError } from '@scripts/check-error';
+import { addSetValueButtonEvents } from '@components/button-events';
 
 const MEGA_MARKET_URL = 'megamarket.ru';
 
@@ -20,22 +20,21 @@ async function init() {
 	const { isThisPageResult, ...result } = await isMegaMarketPage();
 
 	startMessageArea.hide(true);
-	checkError(result);
+	displayError(result);
 
 	if (!isThisPageResult) {
-		checkError({ error: true, content: 'Текущая страница не Мегамаркет' });
+		displayError({ error: true, content: 'Текущая страница не Мегамаркет' });
 		return;
 	}
 	await initAllValueInStorage();
 
-	setEventToBonusButton();
-	setEventToPagesButton();
-	addMainButtonEvents()
+	addSetValueButtonEvents();
+	addMainButtonEvents();
 	mainArea.hide(false);
 }
 
 async function isMegaMarketPage() {
-	const result = await runBackgroundScript<boolean>(isThisPage, [MEGA_MARKET_URL]);
+	const result = await runBackgroundScript<boolean>(isCurrentPage, [MEGA_MARKET_URL]);
 	const isThisPageResult = !result.error && result.data;
 	const error = result.error;
 	const content = result.content;

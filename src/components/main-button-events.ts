@@ -3,7 +3,7 @@ import { LocalStorageSetting } from '@config/local-storage-key.enum';
 import { MegaMarketSelector } from '@config/mega-market-selector';
 import { hideNonMatchingElements } from '@injectable-scripts/hide-non-matching-elements';
 import { loadProductCards } from '@injectable-scripts/load-product-cards';
-import { checkError } from '@scripts/check-error';
+import { displayError } from '@scripts/check-error';
 import { runBackgroundScript } from '@scripts/run-background-script';
 import { PageElementService } from '@services/page-element.service';
 import { LocalStorage } from 'storage-manager-js';
@@ -21,9 +21,9 @@ export function addMainButtonEvents() {
 		const result = await hideFailElements();
 		console.log(result);
 		seinerLoading.hide(true);
-		if(result.error) {
-			checkError(result)
-			return
+		if (result.error) {
+			displayError(result);
+			return;
 		}
 		mainArea.hide(false);
 	});
@@ -47,7 +47,7 @@ async function hideFailElements() {
 	]);
 
 	return {
-		error:  (resultFitter.error || resultPage.error) ? true : false,
+		error: resultFitter.error || resultPage.error ? true : false,
 		content: `loadProductCards content: ${resultPage.content},hideNonMatchingElements content: ${resultFitter.content}`,
 	};
 }
