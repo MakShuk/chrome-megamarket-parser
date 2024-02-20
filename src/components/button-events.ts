@@ -15,6 +15,7 @@ export function setEventToBonusButton() {
 		const value = `${valueStatus.content} %`;
 
 		LocalStorage.set(LocalStorageSetting.Bonus, value);
+		inputElement.setValue('');
 		valueElement.setTextContent(value);
 	});
 }
@@ -31,7 +32,7 @@ export function setEventToPagesButton() {
 		const value = `${valueStatus.content} стр.`;
 
 		LocalStorage.set(LocalStorageSetting.Pages, value);
+		inputElement.setValue('');
 		valueElement.setTextContent(value);
 	});
-
 }
